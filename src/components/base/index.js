@@ -6,10 +6,11 @@ import { icons } from '../../assets';
 import styles, { HEIGHT } from './styles';
 
 const BaseToast = (props) => {
-  const { color, icon, text1, text2, onClose } = props;
+  const { color, icon, text1, text2, onClose, style: propStyle = {} } = props;
 
   const baseStyle = [
     styles.base,
+    propStyle,
     styles.borderLeft,
     { borderLeftColor: color }
   ];
