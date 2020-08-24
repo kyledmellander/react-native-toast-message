@@ -164,7 +164,7 @@ class Toast extends Component {
       ...getInitialState(this.props), // Reset layout
       /*
           Preserve the previously computed height (via onLayout).
-          If the height of the component corresponding to this `show` call is different, 
+          If the height of the component corresponding to this `show` call is different,
           onLayout will be called again and `height` state will adjust.
 
           This fixes an issue where a succession of calls to components with custom heights (custom Toast types)
@@ -277,6 +277,7 @@ class Toast extends Component {
   }
 
   getBaseStyle(position = 'bottom') {
+    const { style: propStyle } = this.props;
     const { topOffset, bottomOffset, height, animation } = this.state;
     const offset = position === 'bottom' ? bottomOffset : topOffset;
     const range = [height, -offset];
@@ -289,6 +290,7 @@ class Toast extends Component {
 
     return [
       styles.base,
+      propStyle,
       styles[position],
       {
         transform: [{ translateY }]
